@@ -7,38 +7,61 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BASE_MODEL, type Look } from "@/data/collection";
 import { HandsOpen } from "@/components/HandsOpen";
 
-const GAP = 34; // vw между соседними вещами
+// сдвиги в % ширины кадра модели, а не экрана: на телефоне кадр шире экрана и вещи не налезают друг на друга
+const GAP = 30;
 const TRAIL = [
   { dx: 0, k: 1 },
-  { dx: 2.2, k: 0.45 },
-  { dx: 4.4, k: 0.2 },
+  { dx: 2, k: 0.45 },
+  { dx: 4, k: 0.2 },
 ];
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 // насколько вещь k «надета» при позиции прокрутки pos: 1 — ровно на модели
 const worn = (k: number, pos: number) => 1 - clamp01(Math.abs(k - pos) / 0.32);
 
-function ghostOpacity(d: number) {
+function ghostOpacity(d: number, narrow: boolean) {
+  // на телефоне следующая вещь появляется только на подходе, чтобы на старте была модель в майке
+  if (narrow) {
+    if (d > 0.85) return 0;
+    if (d > 0.3) return (0.32 * (0.85 - d)) / 0.55;
+    return 0.32 * clamp01((d - 0.06) / 0.24);
+  }
   if (d > 1.7) return 0;
   if (d > 1.1) return (0.32 * (1.7 - d)) / 0.6;
   if (d > 0.3) return 0.32;
   return 0.32 * clamp01((d - 0.06) / 0.24);
 }
 
+function useNarrow() {
+  const [narrow, setNarrow] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setNarrow(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return narrow;
+}
+
 function Ghost({
   look,
   k,
   pos,
+  narrow,
 }: {
   look: Look;
   k: number;
   pos: MotionValue<number>;
+  narrow: boolean;
 }) {
-  const opacity = useTransform(pos, (v) => ghostOpacity(Math.abs(k - v)));
+  const opacity = useTransform(pos, (v) =>
+    ghostOpacity(Math.abs(k - v), narrow),
+  );
   // невидимые слои не рисуем — иначе прокрутка дёргается
   const visibility = useTransform(opacity, (o) =>
     o > 0.005 ? "visible" : "hidden",
@@ -73,7 +96,7 @@ function TrailCopy(props: {
   weight: number;
 }) {
   const { src, aligned, k, pos, dx, weight } = props;
-  const x = useTransform(pos, (v) => `${(k - v) * GAP + dx}vw`);
+  const x = useTransform(pos, (v) => `${(k - v) * GAP + dx}%`);
   return (
     <motion.img
       src={src}
@@ -142,6 +165,7 @@ export function LookSwitcher({
 }: Props) {
   const N = looks.length + 1;
   const Heading = primary ? "h1" : "h2";
+  const narrow = useNarrow();
   const ref = useRef<HTMLElement>(null);
   const [index, setIndex] = useState(0);
   const { scrollYProgress } = useScroll({
@@ -192,7 +216,7 @@ export function LookSwitcher({
             ) : null,
           )}
           {looks.map((l, i) => (
-            <Ghost key={l.id} look={l} k={i + 1} pos={pos} />
+            <Ghost key={l.id} look={l} k={i + 1} pos={pos} narrow={narrow} />
           ))}
         </div>
 

@@ -39,7 +39,7 @@ export function Product() {
   return (
     <section id="product" ref={ref} className="relative bg-paper md:h-[220vh]">
       <div className="grid grid-cols-1 pt-16 md:sticky md:top-0 md:h-screen md:grid-cols-[1fr_1.3fr_1fr]">
-        <div className="flex flex-col justify-between gap-8 px-4 py-8 md:px-8">
+        <div className="order-3 flex flex-col justify-between gap-8 px-4 py-8 md:order-none md:px-8">
           <h2 className="display text-[10vw] md:text-[3vw]">
             Один крой.
             <br />
@@ -53,7 +53,7 @@ export function Product() {
           </p>
         </div>
 
-        <div className="relative aspect-[3/4] overflow-hidden bg-[#e7e3de] md:aspect-auto">
+        <div className="relative order-1 aspect-[4/5] overflow-hidden bg-[#e7e3de] md:order-none md:aspect-auto">
           <AnimatePresence mode="popLayout" initial={false}>
             <motion.div
               key={look.id}
@@ -63,25 +63,30 @@ export function Product() {
               exit={{ opacity: 0, filter: "blur(10px)" }}
               transition={{ duration: 0.6 }}
             >
+              <img
+                src={look.gallery?.[1] ?? look.model ?? look.product}
+                alt={`${look.name} на модели`}
+                className="absolute inset-0 h-full w-full object-cover object-top md:hidden"
+              />
               <motion.img
                 src={look.gallery?.[0] ?? look.garment ?? look.product}
                 alt={look.name}
                 style={{ y: look.model || look.gallery ? garmentY : 0 }}
-                className={`absolute inset-0 h-full w-full object-cover ${look.gallery ? "object-top" : ""}`}
+                className={`absolute inset-0 hidden h-full w-full object-cover md:block ${look.gallery ? "object-top" : ""}`}
               />
               {(look.gallery || look.model) && (
                 <motion.img
                   src={look.gallery?.[1] ?? look.model}
                   alt={`${look.name} на модели`}
                   style={{ y: modelY }}
-                  className={`absolute inset-0 h-full w-full object-cover ${look.gallery ? "object-top" : ""}`}
+                  className={`absolute inset-0 hidden h-full w-full object-cover md:block ${look.gallery ? "object-top" : ""}`}
                 />
               )}
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div className="flex flex-col gap-6 px-4 py-8 md:px-8">
+        <div className="order-2 flex flex-col gap-6 px-4 py-8 md:order-none md:px-8">
           <div>
             <p className="text-[11px] uppercase tracking-[0.1em] text-muted">
               Осень–зима

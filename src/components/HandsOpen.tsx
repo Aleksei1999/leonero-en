@@ -3,7 +3,7 @@
 import { motion, useTransform, type MotionValue } from "framer-motion";
 import { BRAND, asset } from "@/data/collection";
 
-const SPLIT = 49.5; // % ширины кадра: белая щель между полами шубы
+const SPLIT = 52.2; // % ширины кадра: середина белой щели между руками
 
 // руки распахивают шубу поверх начала блока примерки; p — от 0 до 1
 export function HandsOpen({ p }: { p: MotionValue<number> }) {
@@ -15,7 +15,7 @@ export function HandsOpen({ p }: { p: MotionValue<number> }) {
 
   // кадр рук 16:9 крупнее экрана (джинсы снизу уходят за край), проценты разреза совпадают с фото
   const frame =
-    "absolute top-1/2 left-1/2 aspect-video w-[max(128vw,227vh)] -translate-x-1/2 -translate-y-[44%]";
+    "absolute top-1/2 left-1/2 aspect-video w-[max(128vw,227vh)] -translate-x-[52.2%] -translate-y-[44%]";
 
   return (
     <motion.div

@@ -20,7 +20,7 @@ export function Lookbook() {
             src={hero.model ?? hero.product}
             alt=""
             style={{ scale }}
-            className="h-full w-full object-contain"
+            className="h-full w-full object-cover object-top md:object-contain"
           />
         </motion.div>
 
