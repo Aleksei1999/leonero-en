@@ -116,8 +116,9 @@ type Props = {
   opening?: boolean;
 };
 
-const INTRO = 160; // vh прокрутки на распахивание шубы
-const STEP = 55; // vh прокрутки на одну вещь
+const INTRO = 220; // vh прокрутки на распахивание шубы
+const STEP = 80; // vh прокрутки на одну вещь
+const FIRST = 25; // первая вещь доезжает до модели быстрее остальных
 
 export function LookSwitcher({
   id,
@@ -136,8 +137,14 @@ export function LookSwitcher({
     offset: ["start start", "end end"],
   });
   const intro = opening ? INTRO : 0;
-  const introEnd = intro / (intro + N * STEP - 100);
-  const pos = useTransform(scrollYProgress, [introEnd, 1], [0, N - 1]);
+  const range = intro + FIRST + (N - 2) * STEP;
+  const introEnd = intro / range;
+  const firstEnd = (intro + FIRST) / range;
+  const pos = useTransform(
+    scrollYProgress,
+    [introEnd, firstEnd, 1],
+    [0, 1, N - 1],
+  );
   const handsP = useTransform(scrollYProgress, [0, introEnd || 1], [0, 1]);
   const baseOpacity = useTransform(
     pos,
@@ -153,7 +160,7 @@ export function LookSwitcher({
     <section
       id={id}
       ref={ref}
-      style={{ height: `${intro + N * STEP}vh` }}
+      style={{ height: `${range + 100}vh` }}
       className="relative"
     >
       <div className="sticky top-0 h-screen overflow-hidden">
