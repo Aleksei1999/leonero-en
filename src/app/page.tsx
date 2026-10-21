@@ -5,7 +5,7 @@ import { Lookbook } from '@/components/Lookbook';
 import { Mosaic } from '@/components/Mosaic';
 import { Product } from '@/components/Product';
 import { SmoothScroll } from '@/components/SmoothScroll';
-import { ZoomReveal } from '@/components/ZoomReveal';
+import { OpenReveal } from '@/components/OpenReveal';
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       <Mosaic>
         <Lookbook />
       </Mosaic>
-      <ZoomReveal />
+      <OpenReveal />
       <Product />
       <Footer />
     </main>
