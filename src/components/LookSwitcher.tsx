@@ -116,8 +116,8 @@ type Props = {
   opening?: boolean;
 };
 
-const INTRO = 220; // vh прокрутки на распахивание шубы
-const STEP = 80; // vh прокрутки на одну вещь
+const INTRO = 160; // vh прокрутки на распахивание шубы
+const STEP = 55; // vh прокрутки на одну вещь
 
 export function LookSwitcher({
   id,
