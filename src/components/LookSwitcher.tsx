@@ -1,90 +1,88 @@
 'use client';
 
-import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { BASE_MODEL, LOOKS } from '@/data/collection';
+import { BASE_MODEL, LOOKS, type Look } from '@/data/collection';
 
-const STEPS = [{ id: 'base', color: 'Базовый образ', product: undefined, model: BASE_MODEL }, ...LOOKS];
-const N = STEPS.length;
-const EASE = [0.65, 0, 0.25, 1] as const;
+const N = LOOKS.length + 1;
+const GAP = 34; // vw между соседними вещами
+const TRAIL = [
+  { dx: 0, k: 1 },
+  { dx: 2.2, k: 0.45 },
+  { dx: 4.4, k: 0.2 },
+];
 
-function ghost(offset: number, hasModel: boolean) {
-  // вещь с фото на модели «влетает» в центр и растворяется в нём — её заменяет слой модели
-  if (offset === 0) return { x: '0vw', scale: 1, opacity: hasModel ? 0 : 1, filter: 'blur(0px)', zIndex: 2 };
-  const side = Math.sign(offset);
-  const far = Math.abs(offset) > 1;
-  return {
-    x: `${side * (far ? 48 : 30)}vw`,
-    scale: far ? 0.5 : 0.62,
-    opacity: far ? 0 : 0.3,
-    filter: 'blur(1.5px)',
-    zIndex: 1,
-  };
+const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+// насколько вещь k «надета» при позиции прокрутки pos: 1 — ровно на модели
+const worn = (k: number, pos: number) => 1 - clamp01(Math.abs(k - pos) / 0.32);
+
+function ghostOpacity(d: number) {
+  if (d > 1.7) return 0;
+  if (d > 1.1) return 0.32 * (1.7 - d) / 0.6;
+  if (d > 0.3) return 0.32;
+  return 0.32 * clamp01((d - 0.06) / 0.24);
+}
+
+function Ghost({ look, k, pos }: { look: Look; k: number; pos: MotionValue<number> }) {
+  const opacity = useTransform(pos, (v) => ghostOpacity(Math.abs(k - v)));
+  const aligned = Boolean(look.garment);
+  return (
+    <motion.div style={{ opacity }} className="pointer-events-none absolute inset-0">
+      {TRAIL.map((t) => (
+        <TrailCopy key={t.dx} src={look.garment ?? look.product} aligned={aligned} k={k} pos={pos} dx={t.dx} weight={t.k} />
+      ))}
+    </motion.div>
+  );
+}
+
+function TrailCopy(props: { src: string; aligned: boolean; k: number; pos: MotionValue<number>; dx: number; weight: number }) {
+  const { src, aligned, k, pos, dx, weight } = props;
+  const x = useTransform(pos, (v) => `${(k - v) * GAP + dx}vw`);
+  return (
+    <motion.img
+      src={src}
+      alt=""
+      style={{ x, opacity: weight }}
+      className={
+        aligned
+          ? 'absolute inset-0 h-full w-full object-contain'
+          : 'absolute top-[24%] left-[calc(51.7%-19vh)] h-[38vh] w-[38vh] object-contain grayscale'
+      }
+    />
+  );
+}
+
+function Dressed({ look, k, pos }: { look: Look; k: number; pos: MotionValue<number> }) {
+  const opacity = useTransform(pos, (v) => worn(k, v));
+  const filter = useTransform(pos, (v) => `blur(${(1 - worn(k, v)) * 10}px)`);
+  return <motion.img src={look.model} alt={look.name} style={{ opacity, filter }} className="absolute inset-0 h-full w-full object-contain" />;
 }
 
 export function LookSwitcher() {
   const ref = useRef<HTMLElement>(null);
   const [index, setIndex] = useState(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+  const pos = useTransform(scrollYProgress, [0, 1], [0, N - 1]);
+  const baseOpacity = useTransform(pos, (v) =>
+    1 - Math.max(0, ...LOOKS.map((l, i) => (l.model ? worn(i + 1, v) : 0))),
+  );
 
-  useMotionValueEvent(scrollYProgress, 'change', (p) => {
-    setIndex(Math.min(N - 1, Math.max(0, Math.floor(p * N * 0.999))));
-  });
+  useMotionValueEvent(pos, 'change', (v) => setIndex(Math.round(v)));
 
-  const goTo = (i: number) => {
-    const el = ref.current;
-    if (!el) return;
-    const step = (el.offsetHeight - window.innerHeight) / N;
-    window.scrollTo({ top: el.offsetTop + step * i + step / 2, behavior: 'smooth' });
-  };
-
-  const step = STEPS[index];
-  const box = 'absolute h-[80vh] w-[min(66vh,86vw)]';
+  const label = index === 0 ? 'Базовый образ' : LOOKS[index - 1].color;
 
   return (
-    <section id="collection" ref={ref} style={{ height: `${N * 90}vh` }} className="relative">
+    <section id="collection" ref={ref} style={{ height: `${N * 80}vh` }} className="relative">
       <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="absolute inset-0 flex items-end justify-center">
-          {STEPS.map((s, i) =>
-            s.model ? (
-              <motion.img
-                key={`m-${s.id}`}
-                src={s.model}
-                alt=""
-                className={`${box} bottom-0 object-contain object-bottom`}
-                initial={false}
-                animate={
-                  i === index
-                    ? { opacity: 1, filter: 'blur(0px)', scale: 1 }
-                    : { opacity: 0, filter: 'blur(14px)', scale: 1.03 }
-                }
-                transition={{ duration: 0.8, ease: EASE, delay: i === index ? 0.25 : 0 }}
-                style={{ zIndex: 3 }}
-              />
-            ) : null,
-          )}
+        <div className="absolute bottom-0 left-1/2 aspect-video h-[64vh] -translate-x-1/2 md:h-[90vh]">
+          <motion.img src={BASE_MODEL} alt="" style={{ opacity: baseOpacity }} className="absolute inset-0 h-full w-full object-contain" />
+          {LOOKS.map((l, i) => (l.model ? <Dressed key={l.id} look={l} k={i + 1} pos={pos} /> : null))}
+          {LOOKS.map((l, i) => (
+            <Ghost key={l.id} look={l} k={i + 1} pos={pos} />
+          ))}
         </div>
 
-        <div className="absolute inset-0 flex items-end justify-center">
-          {STEPS.map((s, i) =>
-            s.product ? (
-              <motion.button
-                key={s.id}
-                type="button"
-                aria-label={s.color}
-                onClick={() => i !== index && goTo(i)}
-                className={`${box} bottom-0 cursor-pointer`}
-                initial={false}
-                animate={ghost(i - index, Boolean(s.model))}
-                transition={{ duration: 0.9, ease: EASE }}
-              >
-                <img src={s.product} alt="" className="h-full w-full object-contain object-bottom" />
-              </motion.button>
-            ) : null,
-          )}
-        </div>
-
-        <div className="pointer-events-none absolute bottom-[16vh] left-4 z-10 md:bottom-auto md:top-1/2 md:left-8 md:-translate-y-1/2">
+        <div className="pointer-events-none absolute top-24 left-4 z-10 md:top-1/2 md:left-8 md:-translate-y-1/2">
           <h1 className="display text-[13vw] md:text-[5.2vw]">
             Меховая
             <br />
@@ -95,13 +93,11 @@ export function LookSwitcher() {
           </p>
         </div>
 
-        <div className="absolute right-4 bottom-6 z-10 flex flex-col items-end gap-1 text-[11px] uppercase tracking-[0.1em] md:right-8">
-          <motion.span key={step.id} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="font-medium">
-            {step.color}
-          </motion.span>
-          <span className="tabular-nums text-muted">
+        <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center gap-3 text-[11px] uppercase tracking-[0.1em]">
+          <span className="tabular-nums">
             {String(index + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}
           </span>
+          <span className="text-muted">{label}</span>
         </div>
       </div>
     </section>

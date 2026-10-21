@@ -5,8 +5,10 @@ export type Look = {
   swatch: string;
   price: number;
   product: string;
-  // фото девушки в этой накидке, одна поза на всех; пока нет — показываем манекен
+  // фото девушки в этой вещи (16:9, тот же кадр, что BASE_MODEL); пока нет — вещь проезжает мимо
   model?: string;
+  // только вещь на том же 16:9 холсте — её «надевают» на модель
+  garment?: string;
 };
 
 export const BRAND = 'FOMENKO';
@@ -15,7 +17,7 @@ export const BRAND = 'FOMENKO';
 export const BASE_MODEL = '/model/base.png';
 
 export const LOOKS: Look[] = [
-  { id: 'grey', name: 'Куртка Grey', color: 'Серый', swatch: '#8e8f91', price: 18900, product: '/model/grey.png', model: '/model/grey.png' },
+  { id: 'grey', name: 'Куртка Grey', color: 'Серый', swatch: '#8e8f91', price: 18900, product: '/model/grey-garment.png', model: '/model/grey.png', garment: '/model/grey-garment.png' },
   { id: 'olive', name: 'Накидка Olive', color: 'Оливковый', swatch: '#8a9a76', price: 12900, product: '/products/olive.png' },
   { id: 'taupe', name: 'Накидка Taupe', color: 'Тауп', swatch: '#8b7b6d', price: 12900, product: '/products/taupe.png' },
   { id: 'leopard', name: 'Накидка Leo', color: 'Леопард', swatch: '#4a3f38', price: 13900, product: '/products/leopard.png' },
