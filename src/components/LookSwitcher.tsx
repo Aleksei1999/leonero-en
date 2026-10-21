@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { useRef, useState } from "react";
 import { BASE_MODEL, type Look } from "@/data/collection";
+import { HandsOpen } from "@/components/HandsOpen";
 
 const GAP = 34; // vw между соседними вещами
 const TRAIL = [
@@ -111,9 +112,21 @@ type Props = {
   note: string;
   // заголовок страницы только у первого блока
   primary?: boolean;
+  // начать блок с рук, распахивающих шубу
+  opening?: boolean;
 };
 
-export function LookSwitcher({ id, looks, title, note, primary }: Props) {
+const INTRO = 220; // vh прокрутки на распахивание шубы
+const STEP = 80; // vh прокрутки на одну вещь
+
+export function LookSwitcher({
+  id,
+  looks,
+  title,
+  note,
+  primary,
+  opening,
+}: Props) {
   const N = looks.length + 1;
   const Heading = primary ? "h1" : "h2";
   const ref = useRef<HTMLElement>(null);
@@ -122,7 +135,10 @@ export function LookSwitcher({ id, looks, title, note, primary }: Props) {
     target: ref,
     offset: ["start start", "end end"],
   });
-  const pos = useTransform(scrollYProgress, [0, 1], [0, N - 1]);
+  const intro = opening ? INTRO : 0;
+  const introEnd = intro / (intro + N * STEP - 100);
+  const pos = useTransform(scrollYProgress, [introEnd, 1], [0, N - 1]);
+  const handsP = useTransform(scrollYProgress, [0, introEnd || 1], [0, 1]);
   const baseOpacity = useTransform(
     pos,
     (v) =>
@@ -137,10 +153,11 @@ export function LookSwitcher({ id, looks, title, note, primary }: Props) {
     <section
       id={id}
       ref={ref}
-      style={{ height: `${N * 80}vh` }}
+      style={{ height: `${intro + N * STEP}vh` }}
       className="relative"
     >
       <div className="sticky top-0 h-screen overflow-hidden">
+        {opening && <HandsOpen p={handsP} />}
         <div className="absolute bottom-0 left-1/2 aspect-video h-[64vh] -translate-x-1/2 md:h-[90vh]">
           <motion.img
             src={BASE_MODEL}

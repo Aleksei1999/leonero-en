@@ -6,7 +6,6 @@ import { Mosaic } from "@/components/Mosaic";
 import { Product } from "@/components/Product";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { CAPES, JACKETS, VESTS } from "@/data/collection";
-import { OpenReveal } from "@/components/OpenReveal";
 
 export default function Home() {
   return (
@@ -16,22 +15,16 @@ export default function Home() {
       <LookSwitcher
         id="collection"
         primary
-        looks={JACKETS}
-        title={["Меховые", "куртки"]}
+        looks={[...JACKETS, ...VESTS]}
+        title={["Меховая", "коллекция"]}
         note="Листайте вниз: вещи по очереди примеряются на модель."
-      />
-      <LookSwitcher
-        id="vests"
-        looks={VESTS}
-        title={["Меховые", "жилеты"]}
-        note="Четыре цвета, завязки по бокам."
       />
       <Mosaic>
         <Lookbook />
       </Mosaic>
-      <OpenReveal />
       <LookSwitcher
         id="capes"
+        opening
         looks={CAPES}
         title={["Меховые", "накидки"]}
         note="Асимметричный крой, открытый бок."
