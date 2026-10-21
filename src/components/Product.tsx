@@ -7,7 +7,51 @@ import {
   useTransform,
 } from "framer-motion";
 import { useRef, useState } from "react";
-import { LOOKS, ORDER_URL, SIZES, formatPrice } from "@/data/collection";
+import {
+  LOOKS,
+  ORDER_URL,
+  SIZES,
+  formatPrice,
+  type Look,
+} from "@/data/collection";
+
+// на телефоне фото листаются пальцем вбок
+function MobileGallery({ look }: { look: Look }) {
+  const slides =
+    look.gallery ??
+    ([look.model, look.garment ?? look.product].filter(Boolean) as string[]);
+  const [active, setActive] = useState(0);
+  return (
+    <div className="absolute inset-0 md:hidden">
+      <div
+        className="flex h-full snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        onScroll={(e) => {
+          const el = e.currentTarget;
+          setActive(Math.round(el.scrollLeft / el.clientWidth));
+        }}
+      >
+        {slides.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt={`${look.name}, фото ${i + 1}`}
+            className="h-full w-full shrink-0 snap-center object-cover object-top"
+          />
+        ))}
+      </div>
+      {slides.length > 1 && (
+        <div className="pointer-events-none absolute inset-x-0 bottom-4 flex justify-center gap-2">
+          {slides.map((src, i) => (
+            <span
+              key={src}
+              className={`h-1.5 w-1.5 rounded-full transition-colors ${i === active ? "bg-ink" : "bg-ink/25"}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 const DETAILS = [
   [
@@ -63,11 +107,7 @@ export function Product() {
               exit={{ opacity: 0, filter: "blur(10px)" }}
               transition={{ duration: 0.6 }}
             >
-              <img
-                src={look.gallery?.[1] ?? look.model ?? look.product}
-                alt={`${look.name} на модели`}
-                className="absolute inset-0 h-full w-full object-cover object-top md:hidden"
-              />
+              <MobileGallery look={look} />
               <motion.img
                 src={look.gallery?.[0] ?? look.garment ?? look.product}
                 alt={look.name}

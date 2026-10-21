@@ -21,19 +21,22 @@ const TRAIL = [
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 // насколько вещь k «надета» при позиции прокрутки pos: 1 — ровно на модели
-const worn = (k: number, pos: number) => 1 - clamp01(Math.abs(k - pos) / 0.32);
+// около целой позиции вещь держится чёткой (пауза, чтобы рассмотреть), потом плавно уходит
+const HOLD = 0.22;
+const worn = (k: number, pos: number) =>
+  1 - clamp01((Math.abs(k - pos) - HOLD) / 0.28);
 
 function ghostOpacity(d: number, narrow: boolean) {
   // на телефоне следующая вещь появляется только на подходе, чтобы на старте была модель в майке
   if (narrow) {
     if (d > 0.85) return 0;
-    if (d > 0.3) return (0.32 * (0.85 - d)) / 0.55;
-    return 0.32 * clamp01((d - 0.06) / 0.24);
+    if (d > 0.42) return (0.32 * (0.85 - d)) / 0.43;
+    return 0.32 * clamp01((d - HOLD) / 0.2);
   }
   if (d > 1.7) return 0;
   if (d > 1.1) return (0.32 * (1.7 - d)) / 0.6;
-  if (d > 0.3) return 0.32;
-  return 0.32 * clamp01((d - 0.06) / 0.24);
+  if (d > 0.42) return 0.32;
+  return 0.32 * clamp01((d - HOLD) / 0.2);
 }
 
 function useNarrow() {
