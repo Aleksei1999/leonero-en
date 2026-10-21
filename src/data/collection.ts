@@ -23,7 +23,7 @@ export const LOOKS: Look[] = [
   { id: 'vest-grey', name: 'Жилет Silver', color: 'Серебристый', swatch: '#9a9da3', price: 15900, product: '/model/vest-grey-garment.png', model: '/model/vest-grey.png', garment: '/model/vest-grey-garment.png' },
   { id: 'vest-black', name: 'Жилет Noir', color: 'Графит', swatch: '#2a2b2e', price: 15900, product: '/model/vest-black-garment.png', model: '/model/vest-black.png', garment: '/model/vest-black-garment.png' },
   { id: 'vest-brown', name: 'Жилет Choco', color: 'Шоколад', swatch: '#5a4232', price: 15900, product: '/model/vest-brown-garment.png', model: '/model/vest-brown.png', garment: '/model/vest-brown-garment.png' },
-  { id: 'olive', name: 'Накидка Olive', color: 'Оливковый', swatch: '#8a9a76', price: 12900, product: '/products/olive.png' },
+  { id: 'olive', name: 'Накидка Olive', color: 'Оливковый', swatch: '#8a9a76', price: 12900, product: '/products/olive.png', model: '/model/olive.png', garment: '/model/olive-garment.png' },
   { id: 'taupe', name: 'Накидка Taupe', color: 'Тауп', swatch: '#8b7b6d', price: 12900, product: '/products/taupe.png' },
   { id: 'leopard', name: 'Накидка Leo', color: 'Леопард', swatch: '#4a3f38', price: 13900, product: '/products/leopard.png' },
   { id: 'ivory', name: 'Накидка Ivory', color: 'Молочный', swatch: '#ece6dc', price: 12900, product: '/products/ivory.png' },

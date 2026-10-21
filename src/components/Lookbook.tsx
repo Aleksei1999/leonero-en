@@ -42,7 +42,7 @@ export function Lookbook() {
           </div>
           <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
             {[...LOOKS, ...LOOKS].map((l, i) => (
-              <div key={i} className="aspect-[3/4] w-[38vw] shrink-0 bg-[#e7e3de] sm:w-[22vw] md:w-[14vw]">
+              <div key={i} className="aspect-[3/4] w-[38vw] shrink-0 overflow-hidden rounded-[14px] bg-[#e7e3de] sm:w-[22vw] md:w-[14vw]">
                 <img src={l.model ?? l.product} alt={l.name} className="h-full w-full object-cover" />
               </div>
             ))}
