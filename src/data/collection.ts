@@ -11,7 +11,11 @@ export type Look = {
 
 export const BRAND = 'FOMENKO';
 
+// девушка без вещи — с неё начинается переключатель
+export const BASE_MODEL = '/model/base.png';
+
 export const LOOKS: Look[] = [
+  { id: 'grey', name: 'Куртка Grey', color: 'Серый', swatch: '#8e8f91', price: 18900, product: '/model/grey.png', model: '/model/grey.png' },
   { id: 'olive', name: 'Накидка Olive', color: 'Оливковый', swatch: '#8a9a76', price: 12900, product: '/products/olive.png' },
   { id: 'taupe', name: 'Накидка Taupe', color: 'Тауп', swatch: '#8b7b6d', price: 12900, product: '/products/taupe.png' },
   { id: 'leopard', name: 'Накидка Leo', color: 'Леопард', swatch: '#4a3f38', price: 13900, product: '/products/leopard.png' },
