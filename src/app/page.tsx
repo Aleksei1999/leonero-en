@@ -1,6 +1,5 @@
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
-import { Intro } from '@/components/Intro';
 import { LookSwitcher } from '@/components/LookSwitcher';
 import { Lookbook } from '@/components/Lookbook';
 import { Mosaic } from '@/components/Mosaic';
@@ -12,7 +11,6 @@ export default function Home() {
   return (
     <main className="overflow-x-clip">
       <SmoothScroll />
-      <Intro />
       <Header />
       <LookSwitcher />
       <Mosaic>
