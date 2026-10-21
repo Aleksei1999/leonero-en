@@ -11,7 +11,7 @@ export type Look = {
   garment?: string;
 };
 
-export const BRAND = 'FOMENKO';
+export const BRAND = 'LEONERO';
 
 // девушка без вещи — с неё начинается переключатель
 export const BASE_MODEL = '/model/base.png';
@@ -19,6 +19,7 @@ export const BASE_MODEL = '/model/base.png';
 export const LOOKS: Look[] = [
   { id: 'grey', name: 'Куртка Grey', color: 'Серый', swatch: '#8e8f91', price: 18900, product: '/model/grey-garment.png', model: '/model/grey.png', garment: '/model/grey-garment.png' },
   { id: 'brown', name: 'Куртка Mocha', color: 'Мокко', swatch: '#7a6553', price: 18900, product: '/model/brown-garment.png', model: '/model/brown.png', garment: '/model/brown-garment.png' },
+  { id: 'vest', name: 'Жилет Latte', color: 'Латте', swatch: '#c9bcae', price: 15900, product: '/model/vest-garment.png', model: '/model/vest.png', garment: '/model/vest-garment.png' },
   { id: 'olive', name: 'Накидка Olive', color: 'Оливковый', swatch: '#8a9a76', price: 12900, product: '/products/olive.png' },
   { id: 'taupe', name: 'Накидка Taupe', color: 'Тауп', swatch: '#8b7b6d', price: 12900, product: '/products/taupe.png' },
   { id: 'leopard', name: 'Накидка Leo', color: 'Леопард', swatch: '#4a3f38', price: 13900, product: '/products/leopard.png' },

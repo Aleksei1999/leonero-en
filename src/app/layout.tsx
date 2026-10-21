@@ -9,8 +9,8 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: 'FOMENKO — меховые накидки',
-  description: 'Накидки из искусственного меха FOMENKO: пять цветов, одна форма.',
+  title: 'LEONERO — мех',
+  description: 'Меховые куртки, жилеты и накидки LEONERO.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
