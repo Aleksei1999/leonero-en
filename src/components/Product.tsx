@@ -64,17 +64,17 @@ export function Product() {
               transition={{ duration: 0.6 }}
             >
               <motion.img
-                src={look.garment ?? look.product}
+                src={look.gallery?.[0] ?? look.garment ?? look.product}
                 alt={look.name}
-                style={{ y: look.model ? garmentY : 0 }}
-                className="absolute inset-0 h-full w-full object-cover"
+                style={{ y: look.model || look.gallery ? garmentY : 0 }}
+                className={`absolute inset-0 h-full w-full object-cover ${look.gallery ? "object-top" : ""}`}
               />
-              {look.model && (
+              {(look.gallery || look.model) && (
                 <motion.img
-                  src={look.model}
+                  src={look.gallery?.[1] ?? look.model}
                   alt={`${look.name} на модели`}
                   style={{ y: modelY }}
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className={`absolute inset-0 h-full w-full object-cover ${look.gallery ? "object-top" : ""}`}
                 />
               )}
             </motion.div>

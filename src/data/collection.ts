@@ -9,6 +9,8 @@ export type Look = {
   model?: string;
   // только вещь на том же 16:9 холсте — её «надевают» на модель
   garment?: string;
+  // два фото для карточки товара: первое уезжает вверх, второе выезжает снизу
+  gallery?: [string, string];
 };
 
 export const BRAND = 'LEONERO';
@@ -17,7 +19,7 @@ export const BRAND = 'LEONERO';
 export const BASE_MODEL = '/model/base.png';
 
 export const LOOKS: Look[] = [
-  { id: 'grey', name: 'Куртка Grey', color: 'Серый', swatch: '#8e8f91', price: 18900, product: '/model/grey-garment.png', model: '/model/grey.png', garment: '/model/grey-garment.png' },
+  { id: 'grey', name: 'Куртка Grey', color: 'Серый', swatch: '#8e8f91', price: 18900, product: '/model/grey-garment.png', model: '/model/grey.png', garment: '/model/grey-garment.png', gallery: ['/products/grey-1.jpg', '/products/grey-2.jpg'] },
   { id: 'brown', name: 'Куртка Mocha', color: 'Мокко', swatch: '#7a6553', price: 18900, product: '/model/brown-garment.png', model: '/model/brown.png', garment: '/model/brown-garment.png' },
   { id: 'vest', name: 'Жилет Latte', color: 'Латте', swatch: '#c9bcae', price: 15900, product: '/model/vest-garment.png', model: '/model/vest.png', garment: '/model/vest-garment.png' },
   { id: 'vest-grey', name: 'Жилет Silver', color: 'Серебристый', swatch: '#9a9da3', price: 15900, product: '/model/vest-grey-garment.png', model: '/model/vest-grey.png', garment: '/model/vest-grey-garment.png' },
