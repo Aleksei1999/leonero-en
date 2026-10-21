@@ -39,10 +39,14 @@ function Ghost({
   pos: MotionValue<number>;
 }) {
   const opacity = useTransform(pos, (v) => ghostOpacity(Math.abs(k - v)));
+  // невидимые слои не рисуем — иначе прокрутка дёргается
+  const visibility = useTransform(opacity, (o) =>
+    o > 0.005 ? "visible" : "hidden",
+  );
   const aligned = Boolean(look.garment);
   return (
     <motion.div
-      style={{ opacity }}
+      style={{ opacity, visibility }}
       className="pointer-events-none absolute inset-0"
     >
       {TRAIL.map((t) => (
@@ -94,12 +98,20 @@ function Dressed({
   pos: MotionValue<number>;
 }) {
   const opacity = useTransform(pos, (v) => worn(k, v));
-  const filter = useTransform(pos, (v) => `blur(${(1 - worn(k, v)) * 10}px)`);
+  // размытие только во время смены: на полностью надетой вещи фильтр не считается
+  const filter = useTransform(pos, (v) => {
+    const w = worn(k, v);
+    return w > 0 && w < 0.98 ? `blur(${(1 - w) * 10}px)` : "none";
+  });
+  const visibility = useTransform(opacity, (o) =>
+    o > 0.005 ? "visible" : "hidden",
+  );
   return (
     <motion.img
       src={look.model}
       alt={look.name}
-      style={{ opacity, filter }}
+      decoding="async"
+      style={{ opacity, filter, visibility }}
       className="absolute inset-0 h-full w-full object-contain"
     />
   );
@@ -117,8 +129,8 @@ type Props = {
 };
 
 const INTRO = 220; // vh прокрутки на распахивание шубы
-const STEP = 80; // vh прокрутки на одну вещь
-const FIRST = 25; // первая вещь доезжает до модели быстрее остальных
+const STEP = 50; // vh прокрутки на одну вещь
+const FIRST = 50; // первая вещь едет с той же скоростью, что и остальные
 
 export function LookSwitcher({
   id,
@@ -142,7 +154,11 @@ export function LookSwitcher({
   // накидка начинает ехать, как только под шубой видна модель, пока руки ещё уходят за края
   const start = introEnd * 0.5;
   const firstEnd = start + FIRST / range;
-  const pos = useTransform(scrollYProgress, [start, firstEnd, 1], [0, 1, N - 1]);
+  const pos = useTransform(
+    scrollYProgress,
+    [start, firstEnd, 1],
+    [0, 1, N - 1],
+  );
   const handsP = useTransform(scrollYProgress, [0, introEnd || 1], [0, 1]);
   const baseOpacity = useTransform(
     pos,

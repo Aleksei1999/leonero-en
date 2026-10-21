@@ -16,7 +16,7 @@ export type Look = {
 export const BRAND = "LEONERO";
 
 // девушка без вещи — с неё начинается переключатель
-export const BASE_MODEL = "/model/base.png";
+export const BASE_MODEL = "/model/base.webp";
 
 export const LOOKS: Look[] = [
   {
@@ -25,9 +25,9 @@ export const LOOKS: Look[] = [
     color: "Серый",
     swatch: "#8e8f91",
     price: 18900,
-    product: "/model/grey-garment.png",
-    model: "/model/grey.png",
-    garment: "/model/grey-garment.png",
+    product: "/model/grey-garment.webp",
+    model: "/model/grey.webp",
+    garment: "/model/grey-garment.webp",
     gallery: ["/products/grey-1.jpg", "/products/grey-2.jpg"],
   },
   {
@@ -36,9 +36,9 @@ export const LOOKS: Look[] = [
     color: "Мокко",
     swatch: "#7a6553",
     price: 18900,
-    product: "/model/brown-garment.png",
-    model: "/model/brown.png",
-    garment: "/model/brown-garment.png",
+    product: "/model/brown-garment.webp",
+    model: "/model/brown.webp",
+    garment: "/model/brown-garment.webp",
   },
   {
     id: "vest",
@@ -46,9 +46,9 @@ export const LOOKS: Look[] = [
     color: "Латте",
     swatch: "#c9bcae",
     price: 15900,
-    product: "/model/vest-garment.png",
-    model: "/model/vest.png",
-    garment: "/model/vest-garment.png",
+    product: "/model/vest-garment.webp",
+    model: "/model/vest.webp",
+    garment: "/model/vest-garment.webp",
   },
   {
     id: "vest-grey",
@@ -56,9 +56,9 @@ export const LOOKS: Look[] = [
     color: "Серебристый",
     swatch: "#9a9da3",
     price: 15900,
-    product: "/model/vest-grey-garment.png",
-    model: "/model/vest-grey.png",
-    garment: "/model/vest-grey-garment.png",
+    product: "/model/vest-grey-garment.webp",
+    model: "/model/vest-grey.webp",
+    garment: "/model/vest-grey-garment.webp",
   },
   {
     id: "vest-black",
@@ -66,9 +66,9 @@ export const LOOKS: Look[] = [
     color: "Графит",
     swatch: "#2a2b2e",
     price: 15900,
-    product: "/model/vest-black-garment.png",
-    model: "/model/vest-black.png",
-    garment: "/model/vest-black-garment.png",
+    product: "/model/vest-black-garment.webp",
+    model: "/model/vest-black.webp",
+    garment: "/model/vest-black-garment.webp",
   },
   {
     id: "vest-brown",
@@ -76,9 +76,9 @@ export const LOOKS: Look[] = [
     color: "Шоколад",
     swatch: "#5a4232",
     price: 15900,
-    product: "/model/vest-brown-garment.png",
-    model: "/model/vest-brown.png",
-    garment: "/model/vest-brown-garment.png",
+    product: "/model/vest-brown-garment.webp",
+    model: "/model/vest-brown.webp",
+    garment: "/model/vest-brown-garment.webp",
   },
   {
     id: "olive",
@@ -87,8 +87,8 @@ export const LOOKS: Look[] = [
     swatch: "#8a9a76",
     price: 12900,
     product: "/products/olive.png",
-    model: "/model/olive.png",
-    garment: "/model/olive-garment.png",
+    model: "/model/olive.webp",
+    garment: "/model/olive-garment.webp",
   },
   {
     id: "taupe",
@@ -97,8 +97,8 @@ export const LOOKS: Look[] = [
     swatch: "#8b7b6d",
     price: 12900,
     product: "/products/taupe.png",
-    model: "/model/taupe.png",
-    garment: "/model/taupe-garment.png",
+    model: "/model/taupe.webp",
+    garment: "/model/taupe-garment.webp",
   },
   {
     id: "leopard",
@@ -107,8 +107,8 @@ export const LOOKS: Look[] = [
     swatch: "#4a3f38",
     price: 13900,
     product: "/products/leopard.png",
-    model: "/model/leopard.png",
-    garment: "/model/leopard-garment.png",
+    model: "/model/leopard.webp",
+    garment: "/model/leopard-garment.webp",
   },
   {
     id: "ivory",
@@ -117,8 +117,8 @@ export const LOOKS: Look[] = [
     swatch: "#ece6dc",
     price: 12900,
     product: "/products/ivory.png",
-    model: "/model/ivory.png",
-    garment: "/model/ivory-garment.png",
+    model: "/model/ivory.webp",
+    garment: "/model/ivory-garment.webp",
   },
   {
     id: "noir",
@@ -127,8 +127,8 @@ export const LOOKS: Look[] = [
     swatch: "#1c1a19",
     price: 12900,
     product: "/products/noir.png",
-    model: "/model/noir.png",
-    garment: "/model/noir-garment.png",
+    model: "/model/noir.webp",
+    garment: "/model/noir-garment.webp",
   },
 ];
 

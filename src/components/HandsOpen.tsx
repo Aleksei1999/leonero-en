@@ -38,12 +38,12 @@ export function HandsOpen({ p }: { p: MotionValue<number> }) {
           className={frame}
           style={{ clipPath: `inset(0 ${100 - SPLIT}% 0 0)` }}
         >
-          <img src="/model/hands.png" alt="" className="h-full w-full" />
+          <img src="/model/hands.webp" alt="" className="h-full w-full" />
         </div>
       </motion.div>
       <motion.div style={{ x: rightX }} className="absolute inset-0">
         <div className={frame} style={{ clipPath: `inset(0 0 0 ${SPLIT}%)` }}>
-          <img src="/model/hands.png" alt="" className="h-full w-full" />
+          <img src="/model/hands.webp" alt="" className="h-full w-full" />
         </div>
       </motion.div>
     </motion.div>
