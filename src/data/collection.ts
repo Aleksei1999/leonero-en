@@ -13,28 +13,135 @@ export type Look = {
   gallery?: [string, string];
 };
 
-export const BRAND = 'LEONERO';
+export const BRAND = "LEONERO";
 
 // девушка без вещи — с неё начинается переключатель
-export const BASE_MODEL = '/model/base.png';
+export const BASE_MODEL = "/model/base.png";
 
 export const LOOKS: Look[] = [
-  { id: 'grey', name: 'Куртка Grey', color: 'Серый', swatch: '#8e8f91', price: 18900, product: '/model/grey-garment.png', model: '/model/grey.png', garment: '/model/grey-garment.png', gallery: ['/products/grey-1.jpg', '/products/grey-2.jpg'] },
-  { id: 'brown', name: 'Куртка Mocha', color: 'Мокко', swatch: '#7a6553', price: 18900, product: '/model/brown-garment.png', model: '/model/brown.png', garment: '/model/brown-garment.png' },
-  { id: 'vest', name: 'Жилет Latte', color: 'Латте', swatch: '#c9bcae', price: 15900, product: '/model/vest-garment.png', model: '/model/vest.png', garment: '/model/vest-garment.png' },
-  { id: 'vest-grey', name: 'Жилет Silver', color: 'Серебристый', swatch: '#9a9da3', price: 15900, product: '/model/vest-grey-garment.png', model: '/model/vest-grey.png', garment: '/model/vest-grey-garment.png' },
-  { id: 'vest-black', name: 'Жилет Noir', color: 'Графит', swatch: '#2a2b2e', price: 15900, product: '/model/vest-black-garment.png', model: '/model/vest-black.png', garment: '/model/vest-black-garment.png' },
-  { id: 'vest-brown', name: 'Жилет Choco', color: 'Шоколад', swatch: '#5a4232', price: 15900, product: '/model/vest-brown-garment.png', model: '/model/vest-brown.png', garment: '/model/vest-brown-garment.png' },
-  { id: 'olive', name: 'Накидка Olive', color: 'Оливковый', swatch: '#8a9a76', price: 12900, product: '/products/olive.png', model: '/model/olive.png', garment: '/model/olive-garment.png' },
-  { id: 'taupe', name: 'Накидка Taupe', color: 'Тауп', swatch: '#8b7b6d', price: 12900, product: '/products/taupe.png', model: '/model/taupe.png', garment: '/model/taupe-garment.png' },
-  { id: 'leopard', name: 'Накидка Leo', color: 'Леопард', swatch: '#4a3f38', price: 13900, product: '/products/leopard.png', model: '/model/leopard.png', garment: '/model/leopard-garment.png' },
-  { id: 'ivory', name: 'Накидка Ivory', color: 'Молочный', swatch: '#ece6dc', price: 12900, product: '/products/ivory.png', model: '/model/ivory.png', garment: '/model/ivory-garment.png' },
-  { id: 'noir', name: 'Накидка Noir', color: 'Чёрный', swatch: '#1c1a19', price: 12900, product: '/products/noir.png', model: '/model/noir.png', garment: '/model/noir-garment.png' },
+  {
+    id: "grey",
+    name: "Куртка Grey",
+    color: "Серый",
+    swatch: "#8e8f91",
+    price: 18900,
+    product: "/model/grey-garment.png",
+    model: "/model/grey.png",
+    garment: "/model/grey-garment.png",
+    gallery: ["/products/grey-1.jpg", "/products/grey-2.jpg"],
+  },
+  {
+    id: "brown",
+    name: "Куртка Mocha",
+    color: "Мокко",
+    swatch: "#7a6553",
+    price: 18900,
+    product: "/model/brown-garment.png",
+    model: "/model/brown.png",
+    garment: "/model/brown-garment.png",
+  },
+  {
+    id: "vest",
+    name: "Жилет Latte",
+    color: "Латте",
+    swatch: "#c9bcae",
+    price: 15900,
+    product: "/model/vest-garment.png",
+    model: "/model/vest.png",
+    garment: "/model/vest-garment.png",
+  },
+  {
+    id: "vest-grey",
+    name: "Жилет Silver",
+    color: "Серебристый",
+    swatch: "#9a9da3",
+    price: 15900,
+    product: "/model/vest-grey-garment.png",
+    model: "/model/vest-grey.png",
+    garment: "/model/vest-grey-garment.png",
+  },
+  {
+    id: "vest-black",
+    name: "Жилет Noir",
+    color: "Графит",
+    swatch: "#2a2b2e",
+    price: 15900,
+    product: "/model/vest-black-garment.png",
+    model: "/model/vest-black.png",
+    garment: "/model/vest-black-garment.png",
+  },
+  {
+    id: "vest-brown",
+    name: "Жилет Choco",
+    color: "Шоколад",
+    swatch: "#5a4232",
+    price: 15900,
+    product: "/model/vest-brown-garment.png",
+    model: "/model/vest-brown.png",
+    garment: "/model/vest-brown-garment.png",
+  },
+  {
+    id: "olive",
+    name: "Накидка Olive",
+    color: "Оливковый",
+    swatch: "#8a9a76",
+    price: 12900,
+    product: "/products/olive.png",
+    model: "/model/olive.png",
+    garment: "/model/olive-garment.png",
+  },
+  {
+    id: "taupe",
+    name: "Накидка Taupe",
+    color: "Тауп",
+    swatch: "#8b7b6d",
+    price: 12900,
+    product: "/products/taupe.png",
+    model: "/model/taupe.png",
+    garment: "/model/taupe-garment.png",
+  },
+  {
+    id: "leopard",
+    name: "Накидка Leo",
+    color: "Леопард",
+    swatch: "#4a3f38",
+    price: 13900,
+    product: "/products/leopard.png",
+    model: "/model/leopard.png",
+    garment: "/model/leopard-garment.png",
+  },
+  {
+    id: "ivory",
+    name: "Накидка Ivory",
+    color: "Молочный",
+    swatch: "#ece6dc",
+    price: 12900,
+    product: "/products/ivory.png",
+    model: "/model/ivory.png",
+    garment: "/model/ivory-garment.png",
+  },
+  {
+    id: "noir",
+    name: "Накидка Noir",
+    color: "Чёрный",
+    swatch: "#1c1a19",
+    price: 12900,
+    product: "/products/noir.png",
+    model: "/model/noir.png",
+    garment: "/model/noir-garment.png",
+  },
 ];
 
-export const SIZES = ['XS–S', 'M–L', 'XL'];
+const byIds = (ids: string[]) =>
+  ids.map((id) => LOOKS.find((l) => l.id === id)!);
+
+export const JACKETS = byIds(["grey", "brown"]);
+export const VESTS = byIds(["vest", "vest-grey", "vest-black", "vest-brown"]);
+export const CAPES = byIds(["olive", "taupe", "leopard", "ivory", "noir"]);
+
+export const SIZES = ["XS–S", "M–L", "XL"];
 
 // ссылка для заказа, заменить на свой Telegram/WhatsApp
-export const ORDER_URL = 'https://t.me/';
+export const ORDER_URL = "https://t.me/";
 
-export const formatPrice = (p: number) => `${p.toLocaleString('ru-RU')} ₽`;
+export const formatPrice = (p: number) => `${p.toLocaleString("ru-RU")} ₽`;
