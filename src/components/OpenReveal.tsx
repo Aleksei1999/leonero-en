@@ -23,7 +23,7 @@ export function OpenReveal() {
     <section ref={ref} className="relative h-[280vh] bg-white">
       <div className="sticky top-0 h-screen overflow-hidden">
         <motion.div style={{ scale: photoScale }} className={photoFrame}>
-          <img src="/model/brown.png" alt="Девушка в шубе" className="h-full w-full object-contain" />
+          <img src="/model/alps.jpg" alt="Девушка в меховом жилете в горах" className="h-full w-full object-cover" />
         </motion.div>
 
         <motion.div style={{ opacity: wordOpacity }} className="absolute inset-0 flex items-center justify-center bg-white">
