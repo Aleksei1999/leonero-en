@@ -139,12 +139,10 @@ export function LookSwitcher({
   const intro = opening ? INTRO : 0;
   const range = intro + FIRST + (N - 2) * STEP;
   const introEnd = intro / range;
-  const firstEnd = (intro + FIRST) / range;
-  const pos = useTransform(
-    scrollYProgress,
-    [introEnd, firstEnd, 1],
-    [0, 1, N - 1],
-  );
+  // накидка начинает ехать, как только под шубой видна модель, пока руки ещё уходят за края
+  const start = introEnd * 0.5;
+  const firstEnd = start + FIRST / range;
+  const pos = useTransform(scrollYProgress, [start, firstEnd, 1], [0, 1, N - 1]);
   const handsP = useTransform(scrollYProgress, [0, introEnd || 1], [0, 1]);
   const baseOpacity = useTransform(
     pos,

@@ -7,10 +7,10 @@ const SPLIT = 49.5; // % ширины кадра: белая щель между
 
 // руки распахивают шубу поверх начала блока примерки; p — от 0 до 1
 export function HandsOpen({ p }: { p: MotionValue<number> }) {
-  const leftX = useTransform(p, [0.1, 0.85], ["0%", "-62%"]);
-  const rightX = useTransform(p, [0.1, 0.85], ["0%", "62%"]);
-  const wordScale = useTransform(p, [0, 0.6], [1, 1.12]);
-  const wordOpacity = useTransform(p, [0.38, 0.62], [1, 0]);
+  const leftX = useTransform(p, [0.05, 0.7], ["0%", "-62%"]);
+  const rightX = useTransform(p, [0.05, 0.7], ["0%", "62%"]);
+  const wordScale = useTransform(p, [0, 0.45], [1, 1.12]);
+  const wordOpacity = useTransform(p, [0.28, 0.45], [1, 0]);
   const visibility = useTransform(p, (v) => (v >= 1 ? "hidden" : "visible"));
 
   // кадр рук 16:9 крупнее экрана (джинсы снизу уходят за край), проценты разреза совпадают с фото
