@@ -13,10 +13,13 @@ export type Look = {
   gallery?: [string, string];
 };
 
+// на GitHub Pages сайт живёт в подпапке, картинкам нужен её префикс
+export const asset = (path: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+
 export const BRAND = "LEONERO";
 
 // девушка без вещи — с неё начинается переключатель
-export const BASE_MODEL = "/model/base.webp";
+export const BASE_MODEL = asset("/model/base.webp");
 
 export const LOOKS: Look[] = [
   {
@@ -25,10 +28,10 @@ export const LOOKS: Look[] = [
     color: "Серый",
     swatch: "#8e8f91",
     price: 18900,
-    product: "/model/grey-garment.webp",
-    model: "/model/grey.webp",
-    garment: "/model/grey-garment.webp",
-    gallery: ["/products/grey-1.jpg", "/products/grey-2.jpg"],
+    product: asset("/model/grey-garment.webp"),
+    model: asset("/model/grey.webp"),
+    garment: asset("/model/grey-garment.webp"),
+    gallery: [asset("/products/grey-1.jpg"), asset("/products/grey-2.jpg")],
   },
   {
     id: "brown",
@@ -36,9 +39,9 @@ export const LOOKS: Look[] = [
     color: "Мокко",
     swatch: "#7a6553",
     price: 18900,
-    product: "/model/brown-garment.webp",
-    model: "/model/brown.webp",
-    garment: "/model/brown-garment.webp",
+    product: asset("/model/brown-garment.webp"),
+    model: asset("/model/brown.webp"),
+    garment: asset("/model/brown-garment.webp"),
   },
   {
     id: "vest",
@@ -46,9 +49,9 @@ export const LOOKS: Look[] = [
     color: "Латте",
     swatch: "#c9bcae",
     price: 15900,
-    product: "/model/vest-garment.webp",
-    model: "/model/vest.webp",
-    garment: "/model/vest-garment.webp",
+    product: asset("/model/vest-garment.webp"),
+    model: asset("/model/vest.webp"),
+    garment: asset("/model/vest-garment.webp"),
   },
   {
     id: "vest-grey",
@@ -56,9 +59,9 @@ export const LOOKS: Look[] = [
     color: "Серебристый",
     swatch: "#9a9da3",
     price: 15900,
-    product: "/model/vest-grey-garment.webp",
-    model: "/model/vest-grey.webp",
-    garment: "/model/vest-grey-garment.webp",
+    product: asset("/model/vest-grey-garment.webp"),
+    model: asset("/model/vest-grey.webp"),
+    garment: asset("/model/vest-grey-garment.webp"),
   },
   {
     id: "vest-black",
@@ -66,9 +69,9 @@ export const LOOKS: Look[] = [
     color: "Графит",
     swatch: "#2a2b2e",
     price: 15900,
-    product: "/model/vest-black-garment.webp",
-    model: "/model/vest-black.webp",
-    garment: "/model/vest-black-garment.webp",
+    product: asset("/model/vest-black-garment.webp"),
+    model: asset("/model/vest-black.webp"),
+    garment: asset("/model/vest-black-garment.webp"),
   },
   {
     id: "vest-brown",
@@ -76,9 +79,9 @@ export const LOOKS: Look[] = [
     color: "Шоколад",
     swatch: "#5a4232",
     price: 15900,
-    product: "/model/vest-brown-garment.webp",
-    model: "/model/vest-brown.webp",
-    garment: "/model/vest-brown-garment.webp",
+    product: asset("/model/vest-brown-garment.webp"),
+    model: asset("/model/vest-brown.webp"),
+    garment: asset("/model/vest-brown-garment.webp"),
   },
   {
     id: "olive",
@@ -86,9 +89,9 @@ export const LOOKS: Look[] = [
     color: "Оливковый",
     swatch: "#8a9a76",
     price: 12900,
-    product: "/products/olive.png",
-    model: "/model/olive.webp",
-    garment: "/model/olive-garment.webp",
+    product: asset("/products/olive.png"),
+    model: asset("/model/olive.webp"),
+    garment: asset("/model/olive-garment.webp"),
   },
   {
     id: "taupe",
@@ -96,9 +99,9 @@ export const LOOKS: Look[] = [
     color: "Тауп",
     swatch: "#8b7b6d",
     price: 12900,
-    product: "/products/taupe.png",
-    model: "/model/taupe.webp",
-    garment: "/model/taupe-garment.webp",
+    product: asset("/products/taupe.png"),
+    model: asset("/model/taupe.webp"),
+    garment: asset("/model/taupe-garment.webp"),
   },
   {
     id: "leopard",
@@ -106,9 +109,9 @@ export const LOOKS: Look[] = [
     color: "Леопард",
     swatch: "#4a3f38",
     price: 13900,
-    product: "/products/leopard.png",
-    model: "/model/leopard.webp",
-    garment: "/model/leopard-garment.webp",
+    product: asset("/products/leopard.png"),
+    model: asset("/model/leopard.webp"),
+    garment: asset("/model/leopard-garment.webp"),
   },
   {
     id: "ivory",
@@ -116,9 +119,9 @@ export const LOOKS: Look[] = [
     color: "Молочный",
     swatch: "#ece6dc",
     price: 12900,
-    product: "/products/ivory.png",
-    model: "/model/ivory.webp",
-    garment: "/model/ivory-garment.webp",
+    product: asset("/products/ivory.png"),
+    model: asset("/model/ivory.webp"),
+    garment: asset("/model/ivory-garment.webp"),
   },
   {
     id: "noir",
@@ -126,9 +129,9 @@ export const LOOKS: Look[] = [
     color: "Чёрный",
     swatch: "#1c1a19",
     price: 12900,
-    product: "/products/noir.png",
-    model: "/model/noir.webp",
-    garment: "/model/noir-garment.webp",
+    product: asset("/products/noir.png"),
+    model: asset("/model/noir.webp"),
+    garment: asset("/model/noir-garment.webp"),
   },
 ];
 

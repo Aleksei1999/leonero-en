@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useTransform, type MotionValue } from "framer-motion";
-import { BRAND } from "@/data/collection";
+import { BRAND, asset } from "@/data/collection";
 
 const SPLIT = 49.5; // % ширины кадра: белая щель между полами шубы
 
@@ -38,12 +38,12 @@ export function HandsOpen({ p }: { p: MotionValue<number> }) {
           className={frame}
           style={{ clipPath: `inset(0 ${100 - SPLIT}% 0 0)` }}
         >
-          <img src="/model/hands.webp" alt="" className="h-full w-full" />
+          <img src={asset("/model/hands.webp")} alt="" className="h-full w-full" />
         </div>
       </motion.div>
       <motion.div style={{ x: rightX }} className="absolute inset-0">
         <div className={frame} style={{ clipPath: `inset(0 0 0 ${SPLIT}%)` }}>
-          <img src="/model/hands.webp" alt="" className="h-full w-full" />
+          <img src={asset("/model/hands.webp")} alt="" className="h-full w-full" />
         </div>
       </motion.div>
     </motion.div>
