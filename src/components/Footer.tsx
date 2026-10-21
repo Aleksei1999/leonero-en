@@ -1,16 +1,26 @@
 import { BRAND } from '@/data/collection';
 
+const LINKS = [
+  { href: 'https://instagram.com/', label: 'Instagram' },
+  { href: 'https://t.me/', label: 'Telegram' },
+  { href: '/privacy', label: 'Политика конфиденциальности' },
+  { href: '/offer', label: 'Публичная оферта' },
+];
+
 export function Footer() {
   return (
-    <footer className="bg-ink px-4 pt-16 pb-6 text-paper md:px-8">
-      <div className="flex flex-wrap justify-between gap-6 text-[12px] uppercase tracking-[0.08em]">
-        <div className="flex gap-6">
-          <a href="https://instagram.com/">Instagram</a>
-          <a href="https://t.me/">Telegram</a>
-        </div>
-        <span className="text-paper/50">© 2026</span>
+    <footer className="border-t border-black/10 bg-paper px-4 py-8 text-[11px] uppercase tracking-[0.1em] md:px-8">
+      <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+        <span className="font-serif text-[15px] tracking-[0.3em]">{BRAND}</span>
+        <nav className="flex flex-wrap gap-x-6 gap-y-2 text-muted">
+          {LINKS.map((l) => (
+            <a key={l.href} href={l.href} className="transition-colors hover:text-ink">
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <span className="text-muted">© 2026</span>
       </div>
-      <p className="display mt-12 text-center text-[13vw] leading-none">{BRAND}</p>
     </footer>
   );
 }
