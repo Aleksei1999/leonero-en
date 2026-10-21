@@ -10,7 +10,7 @@ export function Footer() {
         </div>
         <span className="text-paper/50">© 2026</span>
       </div>
-      <p className="display mt-12 text-[17.5vw] leading-[0.8]">{BRAND}</p>
+      <p className="display mt-12 text-center text-[13vw] leading-none">{BRAND}</p>
     </footer>
   );
 }

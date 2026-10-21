@@ -7,7 +7,7 @@ export function Header() {
         <a href="#collection">Коллекция</a>
         <a href="#about" className="hidden sm:inline">О бренде</a>
       </nav>
-      <a href="#" className="justify-self-center text-[13px] font-bold tracking-[0.2em]">
+      <a href="#" className="justify-self-center font-serif text-[20px] font-medium tracking-[0.3em]">
         {BRAND}
       </a>
       <div className="flex justify-self-end gap-5">

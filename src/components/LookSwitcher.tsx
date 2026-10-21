@@ -83,7 +83,7 @@ export function LookSwitcher() {
         </div>
 
         <div className="pointer-events-none absolute top-24 left-4 z-10 md:top-1/2 md:left-8 md:-translate-y-1/2">
-          <h1 className="display text-[13vw] md:text-[5.2vw]">
+          <h1 className="display text-[10vw] md:text-[4.2vw]">
             Меховая
             <br />
             коллекция

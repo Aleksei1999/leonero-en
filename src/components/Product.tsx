@@ -20,7 +20,7 @@ export function Product() {
   return (
     <section id="product" className="grid min-h-screen grid-cols-1 bg-paper pt-16 md:grid-cols-[1fr_1.3fr_1fr]">
       <div className="flex flex-col justify-between gap-8 px-4 py-8 md:px-8">
-        <h2 className="display text-[12vw] md:text-[3.6vw]">
+        <h2 className="display text-[10vw] md:text-[3vw]">
           Один крой.
           <br />
           Пять

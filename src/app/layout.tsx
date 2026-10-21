@@ -1,11 +1,17 @@
 import type { Metadata } from 'next';
-import { Archivo } from 'next/font/google';
+import { Cormorant_Garamond, Jost } from 'next/font/google';
 import './globals.css';
 
-const archivo = Archivo({
-  subsets: ['latin', 'latin-ext'],
-  weight: ['400', '500', '700', '800'],
-  variable: '--font-archivo',
+const serif = Cormorant_Garamond({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '500', '600'],
+  variable: '--font-cormorant',
+});
+
+const sans = Jost({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['300', '400', '500'],
+  variable: '--font-jost',
 });
 
 export const metadata: Metadata = {
@@ -15,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className={archivo.variable}>
+    <html lang="ru" className={`${serif.variable} ${sans.variable}`}>
       <body>{children}</body>
     </html>
   );

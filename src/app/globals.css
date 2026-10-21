@@ -10,7 +10,8 @@
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
-  --font-sans: var(--font-archivo);
+  --font-sans: var(--font-jost);
+  --font-serif: var(--font-cormorant);
 }
 
 html.lenis,
@@ -21,13 +22,15 @@ html.lenis body {
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-archivo), Helvetica, Arial, sans-serif;
+  font-family: var(--font-jost), Helvetica, Arial, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
 
 .display {
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 0.9;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1;
   text-transform: uppercase;
 }

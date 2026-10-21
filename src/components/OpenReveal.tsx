@@ -27,7 +27,7 @@ export function OpenReveal() {
         </motion.div>
 
         <motion.div style={{ opacity: wordOpacity }} className="absolute inset-0 flex items-center justify-center bg-white">
-          <motion.span style={{ scale: wordScale }} className="display text-[16vw] tracking-[-0.04em]">
+          <motion.span style={{ scale: wordScale }} className="display pl-[0.12em] text-[12vw]">
             {BRAND}
           </motion.span>
         </motion.div>
