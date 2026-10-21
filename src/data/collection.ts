@@ -24,10 +24,10 @@ export const LOOKS: Look[] = [
   { id: 'vest-black', name: 'Жилет Noir', color: 'Графит', swatch: '#2a2b2e', price: 15900, product: '/model/vest-black-garment.png', model: '/model/vest-black.png', garment: '/model/vest-black-garment.png' },
   { id: 'vest-brown', name: 'Жилет Choco', color: 'Шоколад', swatch: '#5a4232', price: 15900, product: '/model/vest-brown-garment.png', model: '/model/vest-brown.png', garment: '/model/vest-brown-garment.png' },
   { id: 'olive', name: 'Накидка Olive', color: 'Оливковый', swatch: '#8a9a76', price: 12900, product: '/products/olive.png', model: '/model/olive.png', garment: '/model/olive-garment.png' },
-  { id: 'taupe', name: 'Накидка Taupe', color: 'Тауп', swatch: '#8b7b6d', price: 12900, product: '/products/taupe.png' },
-  { id: 'leopard', name: 'Накидка Leo', color: 'Леопард', swatch: '#4a3f38', price: 13900, product: '/products/leopard.png' },
-  { id: 'ivory', name: 'Накидка Ivory', color: 'Молочный', swatch: '#ece6dc', price: 12900, product: '/products/ivory.png' },
-  { id: 'noir', name: 'Накидка Noir', color: 'Чёрный', swatch: '#1c1a19', price: 12900, product: '/products/noir.png' },
+  { id: 'taupe', name: 'Накидка Taupe', color: 'Тауп', swatch: '#8b7b6d', price: 12900, product: '/products/taupe.png', model: '/model/taupe.png', garment: '/model/taupe-garment.png' },
+  { id: 'leopard', name: 'Накидка Leo', color: 'Леопард', swatch: '#4a3f38', price: 13900, product: '/products/leopard.png', model: '/model/leopard.png', garment: '/model/leopard-garment.png' },
+  { id: 'ivory', name: 'Накидка Ivory', color: 'Молочный', swatch: '#ece6dc', price: 12900, product: '/products/ivory.png', model: '/model/ivory.png', garment: '/model/ivory-garment.png' },
+  { id: 'noir', name: 'Накидка Noir', color: 'Чёрный', swatch: '#1c1a19', price: 12900, product: '/products/noir.png', model: '/model/noir.png', garment: '/model/noir-garment.png' },
 ];
 
 export const SIZES = ['XS–S', 'M–L', 'XL'];
