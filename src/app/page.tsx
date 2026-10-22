@@ -16,8 +16,8 @@ export default function Home() {
         id="collection"
         primary
         looks={[...JACKETS, ...VESTS]}
-        title={["Меховая", "коллекция"]}
-        note="Листайте вниз: вещи по очереди примеряются на модель."
+        title={["The Fur", "Collection"]}
+        note="Scroll down to see each piece tried on, one by one."
       />
       <Mosaic>
         <Lookbook />
@@ -26,8 +26,8 @@ export default function Home() {
         id="capes"
         opening
         looks={CAPES}
-        title={["Меховые", "накидки"]}
-        note="Асимметричный крой, открытый бок."
+        title={["Fur", "Capes"]}
+        note="An asymmetric cut with an open side."
       />
       <Product />
       <Footer />

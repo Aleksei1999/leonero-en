@@ -31,13 +31,13 @@ export function Lookbook() {
           <div className="mb-4 flex items-end justify-between gap-4">
             <div>
               <p className="display text-3xl md:text-5xl">@{BRAND.toLowerCase()}</p>
-              <p className="mt-2 text-[12px] text-muted">Как носят накидки наши покупательницы</p>
+              <p className="mt-2 text-[12px] text-muted">How our customers wear their capes</p>
             </div>
             <a
               href="https://instagram.com/"
               className="shrink-0 bg-ink px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.08em] text-paper"
             >
-              Смотреть
+              View
             </a>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">

@@ -3,25 +3,25 @@ import { Cormorant_Garamond, Jost } from 'next/font/google';
 import './globals.css';
 
 const serif = Cormorant_Garamond({
-  subsets: ['latin', 'cyrillic'],
+  subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--font-cormorant',
 });
 
 const sans = Jost({
-  subsets: ['latin', 'cyrillic'],
+  subsets: ['latin'],
   weight: ['300', '400', '500'],
   variable: '--font-jost',
 });
 
 export const metadata: Metadata = {
-  title: 'LEONERO — мех',
-  description: 'Меховые куртки, жилеты и накидки LEONERO.',
+  title: 'LEONERO — Fur',
+  description: 'Faux fur jackets, gilets and capes by LEONERO.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en-GB" className={`${serif.variable} ${sans.variable}`}>
       <body>{children}</body>
     </html>
   );

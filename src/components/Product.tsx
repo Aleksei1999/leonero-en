@@ -34,7 +34,7 @@ function MobileGallery({ look }: { look: Look }) {
           <img
             key={src}
             src={src}
-            alt={`${look.name}, фото ${i + 1}`}
+            alt={`${look.name}, photo ${i + 1}`}
             className="h-full w-full shrink-0 snap-center object-cover object-top"
           />
         ))}
@@ -55,15 +55,15 @@ function MobileGallery({ look }: { look: Look }) {
 
 const DETAILS = [
   [
-    "Состав",
-    "Искусственный мех, подкладка из вискозы. Мех не линяет и держит форму.",
+    "Composition",
+    "Faux fur with a viscose lining. The fur does not shed and holds its shape.",
   ],
   [
-    "Как носить",
-    "Поверх водолазки, пальто или платья. Высокий ворот закрывает шею от ветра.",
+    "How to wear",
+    "Over a roll-neck, a coat or a dress. The high collar keeps the wind off your neck.",
   ],
-  ["Уход", "Деликатная ручная стирка при 30°, сушить в расправленном виде."],
-  ["Доставка", "По России СДЭК, 2–5 дней. Обмен в течение 14 дней."],
+  ["Care", "Gentle hand wash at 30°C. Dry flat."],
+  ["Delivery", "Worldwide delivery. Exchanges within 14 days."],
 ];
 
 export function Product() {
@@ -85,15 +85,15 @@ export function Product() {
       <div className="grid grid-cols-1 pt-16 md:sticky md:top-0 md:h-screen md:grid-cols-[1fr_1.3fr_1fr]">
         <div className="order-3 flex flex-col justify-between gap-8 px-4 py-8 md:order-none md:px-8">
           <h2 className="display text-[10vw] md:text-[3vw]">
-            Один крой.
+            One cut.
             <br />
-            Пять
+            Five
             <br />
-            настроений.
+            moods.
           </h2>
           <p className="max-w-[300px] text-[13px] leading-relaxed text-muted">
-            Накидку не нужно подбирать под фигуру: асимметричный крой ложится
-            сам, а ворот держит форму без застёжек.
+            No need to choose a cape for your figure: the asymmetric cut
+            drapes naturally, and the collar holds its shape without fastenings.
           </p>
         </div>
 
@@ -117,7 +117,7 @@ export function Product() {
               {(look.gallery || look.model) && (
                 <motion.img
                   src={look.gallery?.[1] ?? look.model}
-                  alt={`${look.name} на модели`}
+                  alt={`${look.name} on the model`}
                   style={{ y: modelY }}
                   className={`absolute inset-0 hidden h-full w-full object-cover md:block ${look.gallery ? "object-top" : ""}`}
                 />
@@ -129,7 +129,7 @@ export function Product() {
         <div className="order-2 flex flex-col gap-6 px-4 py-8 md:order-none md:px-8">
           <div>
             <p className="text-[11px] uppercase tracking-[0.1em] text-muted">
-              Осень–зима
+              Autumn–Winter
             </p>
             <h3 className="mt-2 text-xl font-bold">{look.name}</h3>
             <p className="mt-1 text-[15px] tabular-nums">
@@ -139,7 +139,7 @@ export function Product() {
 
           <div>
             <p className="mb-2 text-[11px] uppercase tracking-[0.1em]">
-              Цвет <span className="text-muted">— {look.color}</span>
+              Colour <span className="text-muted">— {look.color}</span>
             </p>
             <div className="flex gap-2">
               {LOOKS.map((l, j) => (
@@ -157,7 +157,7 @@ export function Product() {
 
           <div>
             <p className="mb-2 text-[11px] uppercase tracking-[0.1em]">
-              Размер
+              Size
             </p>
             <div className="flex gap-2">
               {SIZES.map((s) => (
@@ -179,7 +179,7 @@ export function Product() {
             rel="noreferrer"
             className="bg-ink py-3.5 text-center text-[12px] font-medium uppercase tracking-[0.1em] text-paper"
           >
-            Заказать · {size}
+            Order · {size}
           </a>
 
           <div className="border-t border-black/10">

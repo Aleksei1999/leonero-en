@@ -1,59 +1,61 @@
 import type { Metadata } from 'next';
 import { LegalPage } from '@/components/LegalPage';
 
-export const metadata: Metadata = { title: 'Политика конфиденциальности — LEONERO' };
+export const metadata: Metadata = { title: 'Privacy Policy — LEONERO' };
 
 // реквизиты в квадратных скобках заменить на данные продавца
 export default function Privacy() {
   return (
-    <LegalPage title="Политика конфиденциальности" updated="21 октября 2026">
+    <LegalPage title="Privacy Policy" updated="21 October 2026">
       <p>
-        Политика описывает, какие персональные данные собирает [ИП / ООО, ФИО или название] (далее — Продавец), ИНН
-        [ИНН], ОГРНИП [ОГРНИП], когда вы пользуетесь сайтом LEONERO и оформляете заказ, и как эти данные защищаются.
+        This policy explains what personal data [Company name] (the &ldquo;Seller&rdquo;, &ldquo;we&rdquo;), company
+        number [company number], collects when you use the LEONERO website and place an order, and how that data is
+        protected. We process personal data in accordance with the UK GDPR and the Data Protection Act 2018.
       </p>
 
-      <h2>Какие данные мы получаем</h2>
+      <h2>What data we collect</h2>
       <ul>
-        <li>имя, телефон, адрес электронной почты и аккаунт в мессенджере, которые вы указываете при заказе;</li>
-        <li>адрес доставки;</li>
-        <li>технические данные: cookie, IP-адрес, тип браузера и устройства, страницы, которые вы открывали.</li>
+        <li>your name, phone number, email address and messaging account, which you provide when ordering;</li>
+        <li>your delivery address;</li>
+        <li>technical data: cookies, IP address, browser and device type, and the pages you have visited.</li>
       </ul>
 
-      <h2>Зачем</h2>
+      <h2>Why we collect it</h2>
       <ul>
-        <li>чтобы принять, подтвердить и доставить заказ;</li>
-        <li>чтобы ответить на вопросы и решить спорные ситуации;</li>
-        <li>чтобы улучшать сайт и понимать, какие разделы полезны;</li>
-        <li>чтобы присылать новости и предложения — только если вы на это согласились.</li>
+        <li>to accept, confirm and deliver your order;</li>
+        <li>to answer your questions and resolve any disputes;</li>
+        <li>to improve the website and understand which sections are useful;</li>
+        <li>to send you news and offers &mdash; only if you have agreed to this.</li>
       </ul>
 
-      <h2>Кому передаём</h2>
+      <h2>Who we share it with</h2>
       <p>
-        Только тем, без кого заказ не выполнить: службе доставки и платёжному сервису, и только в нужном для этого
-        объёме. Данные не продаются и не передаются третьим лицам для рекламы. По законному запросу данные могут быть
-        переданы государственным органам.
+        Only those we cannot fulfil your order without: our delivery partner and payment provider, and only to the
+        extent required. Your data is never sold or shared with third parties for advertising. We may disclose data to
+        public authorities where the law requires us to.
       </p>
 
-      <h2>Хранение и защита</h2>
+      <h2>Storage and security</h2>
       <p>
-        Данные хранятся на серверах в России столько, сколько нужно для целей выше или сколько требует закон, затем
-        удаляются. Доступ к ним есть только у сотрудников, которые обрабатывают заказы.
+        We keep your data for as long as is necessary for the purposes above or as required by law, after which it is
+        deleted. Only the staff who handle orders have access to it.
       </p>
 
-      <h2>Ваши права</h2>
+      <h2>Your rights</h2>
       <p>
-        Вы можете узнать, какие данные о вас хранятся, попросить их исправить или удалить, отозвать согласие на
-        обработку и рассылку. Напишите на [e-mail] — ответим в течение 10 рабочих дней.
+        You may ask what data we hold about you, have it corrected or erased, and withdraw your consent to processing
+        and marketing at any time. Write to us at [email] and we will reply within one month. You also have the right
+        to complain to the Information Commissioner&rsquo;s Office (ICO).
       </p>
 
-      <h2>Cookie</h2>
+      <h2>Cookies</h2>
       <p>
-        Сайт использует cookie, чтобы работать корректно и собирать обезличенную статистику. Их можно отключить в
-        настройках браузера, но часть функций может перестать работать.
+        The website uses cookies to function correctly and to gather anonymised statistics. You can disable them in
+        your browser settings, although some features may then stop working.
       </p>
 
-      <h2>Контакты</h2>
-      <p>[ИП / ООО, ФИО или название], [адрес], [e-mail], [телефон].</p>
+      <h2>Contact</h2>
+      <p>[Company name], [registered address], [email].</p>
     </LegalPage>
   );
 }

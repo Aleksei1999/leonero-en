@@ -3,9 +3,8 @@ import { BRAND } from '@/data/collection';
 
 const LINKS = [
   { href: 'https://instagram.com/', label: 'Instagram' },
-  { href: 'https://t.me/', label: 'Telegram' },
-  { href: '/privacy', label: 'Политика конфиденциальности' },
-  { href: '/offer', label: 'Публичная оферта' },
+  { href: '/privacy', label: 'Privacy Policy' },
+  { href: '/terms', label: 'Terms of Sale' },
 ];
 
 export function Footer() {

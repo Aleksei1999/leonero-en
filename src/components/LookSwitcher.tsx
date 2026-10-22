@@ -195,7 +195,7 @@ export function LookSwitcher({
 
   useMotionValueEvent(pos, "change", (v) => setIndex(Math.round(v)));
 
-  const label = index === 0 ? "Базовый образ" : looks[index - 1].color;
+  const label = index === 0 ? "Base look" : looks[index - 1].color;
 
   return (
     <section
